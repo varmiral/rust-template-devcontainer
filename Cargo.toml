@@ -1,0 +1,25 @@
+[package]
+name = "rust-template-devcontainer"
+version = "0.1.0"
+edition = "2024"
+
+[profile.dev]
+debug = false
+
+[profile.release]
+strip = true
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+
+# [workspace]
+# members = ["crates/*"]
+
+# [workspace.dependencies]
+# clap = "4.6.1"
+
+# [dependencies]
+# clap = { workspace = true, features = ["derive"] }
+
+[dependencies]

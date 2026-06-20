@@ -1,0 +1,41 @@
+{
+  "image": "varmiral/rust-dev:trixie",
+  // "build": {
+  //   "dockerfile": "Dockerfile",
+  //   "target": "development"
+  // },
+  "initializeCommand": [
+    "bash",
+    ".devcontainer/build-devcontainer.sh",
+    "base=varmiral/debian-vscode:trixie",
+    "development=varmiral/rust-dev:trixie"
+  ],
+  "runArgs": ["--name", "${localWorkspaceFolderBasename}"],
+  "updateRemoteUserUID": false,
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "HISTCONTROL": "ignoreboth",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tombi-toml.tombi"
+      ]
+    }
+  },
+  "mounts": [
+    {
+      "source": "cargo-cache-devcontainer",
+      "target": "/home/vscode/.cargo/registry",
+      "type": "volume"
+    },
+    {
+      "source": "cargo-git-devcontainer",
+      "target": "/home/vscode/.cargo/git",
+      "type": "volume"
+    }
+  ]
+}
